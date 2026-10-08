@@ -1,0 +1,7 @@
+{{- $entries := slice -}}
+{{- range site.RegularPages -}}
+  {{- if and .Title (not .Params.searchHidden) (ne .Layout "archives") (ne .Layout "search") -}}
+    {{- $entries = $entries | append (dict "title" .Title "content" .Plain "permalink" .Permalink "summary" (.Description | default (.Summary | plainify))) -}}
+  {{- end -}}
+{{- end -}}
+{{- $entries | jsonify -}}

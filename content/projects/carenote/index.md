@@ -1,4 +1,5 @@
 ---
+description: "An early team-built iOS health app exploring medical records, current vitals, and medication workflows. Medical document scanner developer & project maintainer."
 title: "CareNote"
 #date: 2024-02-10T03:36:02+05:30
 draft: false
@@ -8,7 +9,7 @@ weight: 97
 
 > [**Source Code**](https://github.com/VanshajSaxena/CareNote)
 
-My first team project was **CareNote**.
+My first team project was **CareNote**. I built the OCR-enabled medical document scanner with Swift and Vision, and worked as a maintainer merging teammates’ pull requests.
 
 It was intense journey to first come up with a problem that has some meaning and is relevant to at least some people. Then develop the actual solution that can solve _this real problem in the real world_.
 

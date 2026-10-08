@@ -1,3 +1,11 @@
+---
+title: "Printit: desktop companion development notes"
+description: "An archived development update on Printit’s desktop workflow, authentication, and event-driven architecture."
+draft: false
+---
+
+> Archived development update. Printit is now dormant and unmaintained; it did not acquire users. This post records progress at the time it was written.
+
 Hello everyone 👋
 
 It’s been a bit since my last update, and I’ve been focusing all my energy in building out the companion desktop experience.

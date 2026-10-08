@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}Vanshaj Saxena — Software engineer{{ else }}{{ .Title }} — Vanshaj Saxena{{ end }}</title>
+  <meta name="description" content="{{ if .IsHome }}Software engineering from thoughtful interfaces to reliable systems. Selected work, architecture, and writing by Vanshaj Saxena.{{ else }}{{ .Description | default (.Summary | plainify | truncate 160) }}{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:title" content="{{ if .IsHome }}Vanshaj Saxena — Software engineer{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ .Description | default `Interfaces, APIs, and the systems that connect them. Selected engineering work by Vanshaj Saxena.` }}">
+  <meta property="og:type" content="{{ if eq .Section `posts` }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ `portfolio/social.png` | absURL }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="theme-color" content="#f6f5f0">
+  <link rel="icon" href="{{ `portfolio/mark.svg` | relURL }}" type="image/svg+xml">
+  {{ $css := resources.Get "css/portfolio.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" title="Vanshaj Saxena" href="{{ .RelPermalink }}">{{ end }}
+  {{ $js := resources.Get "js/portfolio.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="{{ `/` | relURL }}" aria-label="Vanshaj Saxena, home"><span class="brand-mark" aria-hidden="true">vs<span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M5 5h14v14"/></svg></span></span><span>Vanshaj Saxena<span class="brand-sub">SOFTWARE ENGINEER</span></span></a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">+</span></button>
+  <nav id="navigation" aria-label="Main navigation">
+    <a href="{{ `/` | relURL }}#work" {{ if eq .Section "projects" }}aria-current="page"{{ end }}>Work</a>
+    <a href="{{ `/` | relURL }}#about" {{ if eq .RelPermalink "/about/" }}aria-current="page"{{ end }}>About</a>
+    <a href="{{ `/posts/` | relURL }}" {{ if eq .Section "posts" }}aria-current="page"{{ end }}>Writing</a>
+    <a class="nav-contact" href="{{ `/` | relURL }}#contact">Let’s talk <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>
+  </nav>
+</header>
+<main id="main">{{ block "main" . }}{{ end }}</main>
+<footer class="site-footer"><a href="{{ `/` | relURL }}">Vanshaj Saxena<span class="footer-dot">.</span></a><span>Built with care. Made to keep evolving.</span><a href="{{ `/index.xml` | relURL }}">RSS <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a><a href="#top" data-to-top>Back to top <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M5 11l7-7 7 7"/></svg></a></footer>
+</body>
+</html>

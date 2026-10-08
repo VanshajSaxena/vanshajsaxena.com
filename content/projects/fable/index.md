@@ -1,4 +1,5 @@
 ---
+description: "A library management system with separate experiences for members, librarians, and administrators. Backend architect, developer & Scrum Master."
 title: "Fable"
 #date: 2024-02-10T03:36:02+05:30
 draft: false

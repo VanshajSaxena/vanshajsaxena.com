@@ -1,4 +1,5 @@
 ---
+description: "An auction REST API built around explicit contracts, layered business logic, and stateless authentication. Backend development."
 title: "Auction Hub"
 draft: false
 showtoc: false

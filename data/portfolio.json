@@ -1,0 +1,200 @@
+{
+  "projects": [
+    {
+      "id": "printit",
+      "title": "Printit",
+      "category": "ARCHIVED \u00b7 FULL-STACK SYSTEMS",
+      "role": "Architecture & full-stack development",
+      "tagline": "From a document to a printed page. Without the chaos.",
+      "summary": "A cloud printing service connecting customers, print shops, and the unreliable world of physical printers.",
+      "stack": [
+        "TypeScript",
+        "React",
+        "NestJS",
+        "Electron",
+        "C#",
+        "PostgreSQL"
+      ],
+      "problem": "Printing a document often means sending files over WhatsApp, repeating instructions, and losing track of the order. Printit brings document preparation, ordering, and fulfillment into one workflow.",
+      "contribution": "I designed the client, vendor, and backend architecture and built the desktop printing workflow. My work connects user-facing interfaces with cloud orchestration and Windows printing APIs.",
+      "decisions": [
+        {
+          "title": "Keep the cloud lean",
+          "text": "Prepare documents on the client so users control the output before upload. The backend orchestrates data flow; a stateless NestJS service leaves room to scale when demand warrants it."
+        },
+        {
+          "title": "Make unpredictable hardware manageable",
+          "text": "A pure reducer returns the next state and declarative commands. An executor handles IPC, network calls, retries, and printer interactions, then feeds results back as events."
+        },
+        {
+          "title": "Recover with intent",
+          "text": "Persist application state in IndexedDB through Zustand, with rehydration safeguards that reset in-flight queue state. Keep side effects outside the reducer so transitions can be reasoned about independently."
+        }
+      ],
+      "links": [
+        {
+          "label": "Architecture article",
+          "url": "/posts/how-i-designed-and-deployed-a-scalable-cost-efficient-print-service-architecture/"
+        },
+        {
+          "label": "State machine deep dive",
+          "url": "/posts/how-i-architected-and-developed-a-pure-state-machine-inside-the-renderer-process-of-an-electron-application/"
+        }
+      ],
+      "note": "Archived independent project, currently dormant and unmaintained. It did not acquire users; the architecture is presented as engineering work, not a production success story."
+    },
+    {
+      "id": "auction-system",
+      "title": "Auction Hub",
+      "category": "BACKEND \u00b7 API DESIGN",
+      "role": "Backend development",
+      "tagline": "A clear contract for every bid.",
+      "summary": "An auction REST API built around explicit contracts, layered business logic, and stateless authentication.",
+      "stack": [
+        "Java 21",
+        "Spring Boot",
+        "OpenAPI",
+        "Spring Security",
+        "Hibernate",
+        "MapStruct"
+      ],
+      "problem": "An auction backend needs a consistent interface for users, items, bids, and auctions. Clients need to know what to expect, while authentication and persistence need clear boundaries.",
+      "contribution": "I built an API-first Spring Boot service with generated server interfaces, service and repository layers, DTO mapping, and JWT/OAuth2 security.",
+      "decisions": [
+        {
+          "title": "Start with the contract",
+          "text": "Define endpoints in OpenAPI 3 and generate Spring server stubs during the Maven build. Consumers can inspect the same contract used to shape the implementation."
+        },
+        {
+          "title": "Separate transport from persistence",
+          "text": "Use DTOs and MapStruct at the API boundary, with Spring Data JPA and Hibernate for persistence. H2 supports development; MySQL configuration provides an alternative runtime database."
+        },
+        {
+          "title": "Treat security as a boundary",
+          "text": "Use Spring Security with JWT and OAuth2 authentication, rather than scattering authentication logic through business services."
+        }
+      ],
+      "links": [
+        {
+          "label": "Explore source",
+          "url": "https://github.com/VanshajSaxena/auction-system"
+        }
+      ],
+      "note": "Source project; no public hosted demo is claimed."
+    },
+    {
+      "id": "fable",
+      "title": "Fable",
+      "category": "NATIVE APPS \u00b7 TEAM DELIVERY",
+      "role": "Backend architect, developer & Scrum Master",
+      "tagline": "Two apps. One library workflow.",
+      "summary": "A library management system with separate experiences for members, librarians, and administrators.",
+      "stack": ["Swift", "SwiftUI", "Firebase", "Firestore", "MVVM"],
+      "problem": "Library members and staff have different needs. Fable separates the member experience from library operations while sharing the data needed to manage books and memberships.",
+      "contribution": "During my Infosys internship in Mysuru, I worked primarily on the administrator and librarian application as a backend architect and developer. I also served as Scrum Master in a ten-person team.",
+      "decisions": [
+        {
+          "title": "Design around distinct roles",
+          "text": "Separate the member and staff applications, so library operations have an interface suited to administrators and librarians."
+        },
+        {
+          "title": "Keep views focused",
+          "text": "Organize the application using models, services, view models, and SwiftUI views. MVVM creates a place for view state without putting every responsibility into the screen."
+        },
+        {
+          "title": "Isolate data access",
+          "text": "A dedicated Firestore service fetches book metadata asynchronously. Service boundaries keep external data access separate from presentation."
+        }
+      ],
+      "links": [
+        {
+          "label": "Staff app source",
+          "url": "https://github.com/VanshajSaxena/LMS_Admin_Librarian"
+        },
+        {
+          "label": "Member app source",
+          "url": "https://github.com/VanshajSaxena/LMS_User"
+        }
+      ],
+      "note": "Internship team project. Demo videos below show the developed applications."
+    },
+    {
+      "id": "carenote",
+      "title": "CareNote",
+      "category": "iOS \u00b7 PRODUCT DESIGN",
+      "role": "Medical document scanner developer & project maintainer",
+      "tagline": "Health information, made easier to navigate.",
+      "summary": "An early team-built iOS health app exploring medical records, current vitals, and medication workflows.",
+      "stack": ["Swift", "UIKit", "SwiftUI", "Swift Charts", "Vision"],
+      "problem": "Health records, vital readings, and medication information are easier to understand when they can be viewed together. CareNote explores that experience in a native iOS app.",
+      "contribution": "I built the OCR-enabled medical document scanner and maintained the shared project by reviewing and merging teammates\u2019 pull requests. I also collaborated on the prototype design and iOS application.",
+      "decisions": [
+        {
+          "title": "Prototype the experience first",
+          "text": "The team designed health overview and current-vitals screens before translating the UI into the application. The images shown here are design prototypes, not production screenshots."
+        },
+        {
+          "title": "Turn a document into usable information",
+          "text": "I built the scanner using the native Vision text-recognition workflow. The implementation extracts text from medical document images and organizes recognized parameters for the app\u2019s health-record workflow."
+        },
+        {
+          "title": "Keep team delivery moving",
+          "text": "As a project maintainer, I merged contributions from teammates into the shared application. The wider codebase combines UIKit screens with SwiftUI charts; my specific implementation focus was the document scanner."
+        }
+      ],
+      "links": [
+        {
+          "label": "Explore source",
+          "url": "https://github.com/VanshajSaxena/CareNote"
+        }
+      ],
+      "note": "Team-built iOS project. Images are design prototypes; my documented contributions are the OCR scanner and PR maintenance."
+    },
+    {
+      "id": "mypay",
+      "title": "MyPay",
+      "category": "CURRENT ROLE \u00b7 PRODUCT ENGINEERING",
+      "role": "Software engineer \u00b7 end-to-end product ownership",
+      "tagline": "New products. A modern foundation.",
+      "summary": "End-to-end work on a website editor and employee system, alongside a major frontend modernization.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "TanStack Query",
+        "TanStack Router",
+        "Tailwind CSS",
+        "Zod",
+        "Vitest",
+        "Playwright"
+      ],
+      "problem": "New product development and a large legacy application create different engineering challenges. At MyPay, my work spans a visual website editor, an employee management system, and the ongoing modernization of a roughly 200,000-line frontend.",
+      "contribution": "I own backend and frontend work end-to-end for the website editor and employee management system. On the legacy rewrite, I work mostly on the frontend, with some backend contributions, using AI-assisted development.",
+      "decisions": [
+        {
+          "title": "Own the workflow across layers",
+          "text": "For the website editor and employee system, I work across the backend and frontend rather than owning a single UI slice. The employee management system was designed and created for the company."
+        },
+        {
+          "title": "Give the frontend explicit boundaries",
+          "text": "The modern merchant-portal stack includes React and TypeScript, TanStack Router for navigation, TanStack Query for server state, and React Hook Form with Zod for form validation. These tools separate distinct application concerns."
+        },
+        {
+          "title": "Make quality checks part of the toolkit",
+          "text": "The portal configuration includes TypeScript checks, Biome, Vitest and Testing Library, MSW, and Playwright. Its check script combines type checking, Biome, design-token checks, and unit tests; browser tests have a separate command."
+        },
+        {
+          "title": "Modernize a large existing surface",
+          "text": "The legacy frontend is roughly 200,000 lines. I am helping rewrite it with a modern stack and AI-assisted development. This is ongoing work, not a claim that the migration is complete."
+        }
+      ],
+      "links": [
+        {
+          "label": "Talk about my work",
+          "url": "mailto:hey@vanshajsaxena.com"
+        }
+      ],
+      "note": "Professional work. This overview uses owner-confirmed responsibilities and the provided merchant-portal tooling manifest. Internal source code, screenshots, business metrics, and deployment details are not published here."
+    }
+  ]
+}
