@@ -7,3 +7,5 @@ The package contains the redesigned portfolio, project case studies, writing, se
 If your browser restricts local file access, run `python3 -m http.server 8000` from the extracted folder and open the local server in your browser.
 
 This is a review artifact on a separate preview branch. It does not replace the production site.
+
+Static screenshots: [desktop](desktop.png) · [mobile](mobile.png).
